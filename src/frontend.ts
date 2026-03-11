@@ -355,7 +355,7 @@ export const html = `<!DOCTYPE html>
     <div class="footer">
       <strong>CLAUDEFLARE</strong>
       A joke by <a href="https://bsky.app/profile/knut.fyi" target="_blank" rel="noopener">@knut.fyi</a>
-      <span class="not-affiliated">Your API keys are sent directly to the respective APIs and never stored. Not affiliated with Cloudflare or Anthropic.</span>
+      <span class="not-affiliated">Your API keys are sent directly to the respective APIs and never stored. <a href="https://github.com/kmelve/claudeflare" target="_blank" rel="noopener">View source</a>. Not affiliated with Cloudflare or Anthropic.</span>
     </div>
 
     <div class="error" id="error"></div>
@@ -462,6 +462,12 @@ export const html = `<!DOCTYPE html>
       el.classList.add("active");
     }
 
+    function esc(s) {
+      const d = document.createElement("div");
+      d.textContent = s;
+      return d.innerHTML;
+    }
+
     function formatNumber(n) {
       if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + "M";
       if (n >= 1_000) return (n / 1_000).toFixed(1) + "K";
@@ -482,8 +488,8 @@ export const html = `<!DOCTYPE html>
         { label: "Threats Blocked", value: formatNumber(analytics.totalThreats) },
       ].map(s => \`
         <div class="stat-card">
-          <div class="stat-label">\${s.label}</div>
-          <div class="stat-value">\${s.value}</div>
+          <div class="stat-label">\${esc(s.label)}</div>
+          <div class="stat-value">\${esc(s.value)}</div>
         </div>
       \`).join("");
 
@@ -494,9 +500,9 @@ export const html = `<!DOCTYPE html>
         const pct = maxHourly > 0 ? (h.requests / maxHourly) * 100 : 0;
         return \`
           <div class="bar-row">
-            <span class="bar-label">\${hour}</span>
+            <span class="bar-label">\${esc(hour)}</span>
             <div class="bar-track"><div class="bar-fill" style="width:\${pct}%"></div></div>
-            <span class="bar-count">\${formatNumber(h.requests)}</span>
+            <span class="bar-count">\${esc(formatNumber(h.requests))}</span>
           </div>
         \`;
       }).join("");
@@ -508,9 +514,9 @@ export const html = `<!DOCTYPE html>
         const pct = maxCountry > 0 ? (count / maxCountry) * 100 : 0;
         return \`
           <div class="bar-row">
-            <span class="bar-label" style="min-width:120px">\${name}</span>
+            <span class="bar-label" style="min-width:120px">\${esc(name)}</span>
             <div class="bar-track"><div class="bar-fill" style="width:\${pct}%"></div></div>
-            <span class="bar-count">\${formatNumber(count)}</span>
+            <span class="bar-count">\${esc(formatNumber(count))}</span>
           </div>
         \`;
       }).join("");
@@ -523,9 +529,9 @@ export const html = `<!DOCTYPE html>
         const isError = parseInt(code) >= 400;
         return \`
           <div class="bar-row">
-            <span class="bar-label">\${code}</span>
+            <span class="bar-label">\${esc(code)}</span>
             <div class="bar-track"><div class="bar-fill \${isError ? 'error-code' : ''}" style="width:\${pct}%"></div></div>
-            <span class="bar-count">\${formatNumber(count)}</span>
+            <span class="bar-count">\${esc(formatNumber(count))}</span>
           </div>
         \`;
       }).join("");

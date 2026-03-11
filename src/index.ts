@@ -258,6 +258,10 @@ export default {
           return jsonResponse({ error: "Missing required fields: cfApiToken, zoneId, anthropicApiKey" }, 400);
         }
 
+        if (!/^[a-f0-9]{32}$/.test(body.zoneId)) {
+          return jsonResponse({ error: "Invalid Zone ID format. It should be a 32-character hex string." }, 400);
+        }
+
         const groups = await fetchCloudflareAnalytics(body.cfApiToken, body.zoneId);
         const analytics = summarizeAnalytics(groups);
         const promptText = formatAnalyticsForPrompt(analytics);
