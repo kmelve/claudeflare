@@ -4,6 +4,14 @@ export const html = `<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claudeflare — Earnest Traffic Analysis</title>
+  <meta name="description" content="Claude analyzes your Cloudflare traffic analytics with genuine fascination, unnecessary caveats, and philosophical concern for your 404s.">
+  <meta property="og:title" content="Claudeflare">
+  <meta property="og:description" content="Claude analyzes your Cloudflare traffic with genuine fascination, unnecessary caveats, and philosophical concern for your 404s.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://claudeflare.app">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Claudeflare">
+  <meta name="twitter:description" content="Claude analyzes your Cloudflare traffic with genuine fascination, unnecessary caveats, and philosophical concern for your 404s.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
