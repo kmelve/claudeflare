@@ -1,0 +1,16 @@
+{
+  "name": "claudeflare",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-03-10",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "logs": { "head_sampling_rate": 1 }
+  },
+  "routes": [
+    {
+      "pattern": "claudeflare.app",
+      "custom_domain": true
+    }
+  ]
+}
